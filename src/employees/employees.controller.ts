@@ -6,6 +6,7 @@ import {
   Patch,
   Param,
   Delete,
+  Query,
 } from '@nestjs/common';
 import { EmployeesService } from './employees.service';
 import { CreateEmployeeDto } from './dto/create-employee.dto';
@@ -24,9 +25,13 @@ export class EmployeesController {
     return this.employeesService.create(createEmployeeDto);
   }
 
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.getEmployeeRecordsUseCase.execute(id);
+  @Get(':id/records')
+  async getRecordsByMonth(
+    @Param('id') id: string,
+    @Query('month') month: number,
+    @Query('year') year: number,
+  ) {
+    return this.getEmployeeRecordsUseCase.execute(id, month, year);
   }
 
   @Get()

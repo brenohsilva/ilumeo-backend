@@ -13,21 +13,32 @@ export class EmployeesService {
     });
   }
 
-  
-
   async findAll() {
     return `This action returns a employee`;
   }
 
   async findOne(employeeId: number) {
-    console.log(employeeId)
+    console.log(employeeId);
     return await this.prisma.employees.findFirst({
       where: {
         id: 1,
       },
       include: {
-        registers: true
-      }
+        registers: true,
+      },
+    });
+  }
+
+  async findRecordsByMonth(employeeId: number, month: number, year: number) {
+    return await this.prisma.records.findMany({
+      where: {
+        employeesId: employeeId,
+        month: month || 1,
+        year: year,
+      },
+      orderBy: {
+        day: 'asc',
+      },
     });
   }
 
