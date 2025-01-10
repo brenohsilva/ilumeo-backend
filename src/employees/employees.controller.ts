@@ -52,13 +52,14 @@ export class EmployeesController {
     return this.employeesService.findAll();
   }
 
-  @Get(':id/balances')
+  @UseGuards(AuthGuard)
+  @Get('balances')
   async getBalances(
-    @Param('id') id: string,
+    @Request() req,
     @Query('month') month?: number,
     @Query('year') year?: number,
   ) {
-    return this.getEmployeeBalancesUseCase.execute(Number(id), month, year);
+    return this.getEmployeeBalancesUseCase.execute(req, month, year);
   }
 
   @Patch(':id')
