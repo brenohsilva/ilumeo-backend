@@ -12,20 +12,22 @@ model employees {
   name      String
   code      String      @unique
   createdAt DateTime    @default(now())
-  registers registers[]
+  registers records[]
 }
 
-model registers {
+model records {
   id             Int       @id @default(autoincrement())
   employeesId    Int
-  year           Int
-  month          Int
   day            Int
-  morningEntry   DateTime?
-  morningExit    DateTime?
-  afternoonEntry DateTime?
-  afternoonExit  DateTime?
-  workedHours    Float?
+  month        Int      
+  year         Int     
+  entry   DateTime?
+  lunchStart    DateTime?
+  lunchEnd      DateTime?
+  exit    DateTime? 
+  workedHours    Float? 
+  expectedHours Float   @default(8)
+  balanceHours Float   
   employees      employees @relation(fields: [employeesId], references: [id])
 
   @@index([employeesId])
