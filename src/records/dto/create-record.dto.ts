@@ -1,5 +1,5 @@
 export class CreateRecordDto {
-  employeesId: number;
+  employeesId?: number;
   day: number;
   month: number;
   year: number;
