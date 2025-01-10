@@ -14,7 +14,7 @@ export class RecordsService {
         month: createRecordDto.month,
         year: createRecordDto.year,
         entry: createRecordDto.record,
-        balanceHours: 245.4,
+        balanceHours: 0,
       },
     });
   }
