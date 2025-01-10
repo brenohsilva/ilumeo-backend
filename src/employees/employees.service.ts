@@ -17,11 +17,18 @@ export class EmployeesService {
     return `This action returns a employee`;
   }
 
-  async findOne(employeeId: number) {
-    console.log(employeeId);
+  async findOne(code: string) {
+    return await this.prisma.employees.findUnique({
+      where: {
+        code,
+      },
+    });
+  }
+  
+  async findOneWithRecords(employeeId: number) {
     return await this.prisma.employees.findFirst({
       where: {
-        id: 1,
+        id: employeeId,
       },
       include: {
         registers: true,
