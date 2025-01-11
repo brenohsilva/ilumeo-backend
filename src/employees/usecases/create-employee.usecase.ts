@@ -2,7 +2,6 @@ import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { EmployeesService } from '../employees.service';
 import { CreateEmployeeDto } from '../dto/create-employee.dto';
 import { Prisma } from '@prisma/client';
-
 @Injectable()
 export class CreateEmployeeUseCase {
   constructor(private readonly employeesService: EmployeesService) {}
@@ -10,10 +9,7 @@ export class CreateEmployeeUseCase {
   async execute(createEmployeeDto: CreateEmployeeDto) {
     try {
       const employee = await this.employeesService.create(createEmployeeDto);
-      return {
-        success: true,
-        data: employee,
-      };
+      return employee;
     } catch (error) {
       if (error instanceof Prisma.PrismaClientKnownRequestError) {
         if (error.code === 'P2002') {
