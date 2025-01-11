@@ -3,16 +3,12 @@ import {
   Get,
   Post,
   Body,
-  Patch,
-  Param,
-  Delete,
   Query,
   UseGuards,
   Request,
 } from '@nestjs/common';
 import { EmployeesService } from './employees.service';
 import { CreateEmployeeDto } from './dto/create-employee.dto';
-import { UpdateEmployeeDto } from './dto/update-employee.dto';
 import { GetEmployeeRecordsUseCase } from './usecases/get-employee-records.usecase';
 import { GetEmployeeBalancesUseCase } from 'src/records/usecases/get-employee-balance.usecase';
 import { AuthGuard } from 'src/auth/auth.guard';
@@ -38,18 +34,14 @@ export class EmployeesController {
     return req.employee;
   }
 
+  @UseGuards(AuthGuard)
   @Get(':id/records')
   async getRecordsByMonth(
-    @Param('id') id: string,
+    @Request() req,
     @Query('month') month: number,
     @Query('year') year: number,
   ) {
-    return this.getEmployeeRecordsUseCase.execute(id, month, year);
-  }
-
-  @Get()
-  findAll() {
-    return this.employeesService.findAll();
+    return this.getEmployeeRecordsUseCase.execute(req, month, year);
   }
 
   @UseGuards(AuthGuard)
@@ -60,18 +52,5 @@ export class EmployeesController {
     @Query('year') year?: number,
   ) {
     return this.getEmployeeBalancesUseCase.execute(req, month, year);
-  }
-
-  @Patch(':id')
-  update(
-    @Param('id') id: string,
-    @Body() updateEmployeeDto: UpdateEmployeeDto,
-  ) {
-    return this.employeesService.update(+id, updateEmployeeDto);
-  }
-
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.employeesService.remove(+id);
   }
 }
