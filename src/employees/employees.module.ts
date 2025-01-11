@@ -4,7 +4,6 @@ import { EmployeesController } from './employees.controller';
 import { PrismaService } from 'src/prisma.service';
 import { GetEmployeeRecordsUseCase } from './usecases/get-employee-records.usecase';
 import { GetEmployeeBalancesUseCase } from 'src/records/usecases/get-employee-balance.usecase';
-import { JwtService } from '@nestjs/jwt';
 import { CreateEmployeeUseCase } from './usecases/create-employee.usecase';
 
 @Module({
@@ -14,7 +13,7 @@ import { CreateEmployeeUseCase } from './usecases/create-employee.usecase';
     PrismaService,
     GetEmployeeRecordsUseCase,
     GetEmployeeBalancesUseCase,
-    CreateEmployeeUseCase
+    CreateEmployeeUseCase,
   ],
 })
 export class EmployeesModule {}
