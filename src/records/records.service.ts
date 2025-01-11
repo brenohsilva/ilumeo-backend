@@ -36,15 +36,5 @@ export class RecordsService {
     });
   }
 
-  async findAll() {
-    return `This action returns all records`;
-  }
 
-  async findOne(id: number) {
-    return `This action returns a #${id} record`;
-  }
-
-  async remove(id: number) {
-    return `This action removes a #${id} record`;
-  }
 }
