@@ -1,15 +1,27 @@
 import { calculateWorkedHours } from './calculate-worked-hours';
 
 export function getNextAvailableField(register: any, record: Date | string) {
-  if (!register.entry) return { entry: record };
-  if (!register.lunchStart) return { lunchStart: record };
-  if (!register.lunchEnd) return { lunchEnd: record };
+  if (!register.entry) {
+    return { entry: record };
+  }
+
+  if (!register.lunchStart) {
+    const workedHours = calculateWorkedHours({
+      entry: register.entry,
+      lunchStart: record,
+    });
+
+    return {
+      lunchStart: record,
+      workedHours,
+    };
+  }
+
+  if (!register.lunchEnd) {
+    return { lunchEnd: record };
+  }
 
   if (!register.exit) {
-    if (!register.entry || !register.lunchStart || !register.lunchEnd) {
-      throw new Error('Faltam campos obrigatórios para calcular workedHours.');
-    }
-
     const workedHours = calculateWorkedHours({
       entry: register.entry,
       lunchStart: register.lunchStart,

@@ -11,8 +11,6 @@ export function calculateWorkedHours({
 }): number {
   let workedHours = 0;
 
-  console.log(entry, lunchStart, lunchEnd, exit)
-
   if (entry && lunchStart) {
     const entryDate = new Date(entry);
     const lunchStartDate = new Date(lunchStart);
