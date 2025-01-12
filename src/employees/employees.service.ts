@@ -36,7 +36,7 @@ export class EmployeesService {
       where: {
         employeesId: employeeId,
         month: month || 1,
-        year: year,
+        year: year || 2025,
       },
       orderBy: {
         day: 'asc',
