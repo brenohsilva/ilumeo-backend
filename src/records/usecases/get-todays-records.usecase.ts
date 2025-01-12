@@ -18,6 +18,13 @@ export class GetTodaysRecordUseCase {
         year,
       );
 
+      if (!response) {
+        return {
+          success: true,
+          data: 'first access',
+        };
+      }
+
       return {
         success: true,
         data: response,

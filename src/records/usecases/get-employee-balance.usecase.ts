@@ -20,13 +20,6 @@ export class GetEmployeeBalancesUseCase {
         select: { balanceHours: true },
       });
 
-      if (!records || records.length === 0) {
-        throw new HttpException(
-          'Nenhum registro encontrado para o período especificado.',
-          HttpStatus.NOT_FOUND,
-        );
-      }
-
       const totalBalance = records.reduce(
         (sum, record) => sum + record.balanceHours,
         0,

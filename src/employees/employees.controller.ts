@@ -35,7 +35,7 @@ export class EmployeesController {
   }
 
   @UseGuards(AuthGuard)
-  @Get(':id/records')
+  @Get('records')
   async getRecordsByMonth(
     @Request() req,
     @Query('month') month: number,
