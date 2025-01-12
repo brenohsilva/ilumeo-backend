@@ -25,8 +25,13 @@ export class GetEmployeeBalancesUseCase {
         0,
       );
 
+      const totalMinutes = Math.round(totalBalance * 60);
+      const hours = Math.floor(totalMinutes / 60);
+      const minutes = Math.abs(totalMinutes % 60);
+
       return {
         totalBalance: parseFloat(totalBalance.toFixed(2)),
+        formattedBalance: `${hours}h ${minutes.toString().padStart(2, '0')}m`,
         ...(month && year ? { month, year } : {}),
       };
     } catch (error) {
