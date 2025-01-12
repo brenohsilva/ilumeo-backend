@@ -11,7 +11,7 @@ export class AuthService {
 
   async signIn(code: string): Promise<any> {
     const employee = await this.employeeService.findOne(code);
-    console.log(employee);
+
     if (!employee) {
       throw new UnauthorizedException();
     }
