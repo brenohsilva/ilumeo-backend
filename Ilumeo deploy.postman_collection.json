@@ -1,0 +1,274 @@
+{
+	"info": {
+		"_postman_id": "5970ca8f-37ec-41a4-b384-cf0ac5b692d6",
+		"name": "Ilumeo deploy",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "15235667"
+	},
+	"item": [
+		{
+			"name": "create employees",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Breno Henrique da Silva\",\r\n    \"code\": \"ILUMEO01\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://ilumeo-api-aii4.onrender.com/employees",
+					"protocol": "https",
+					"host": [
+						"ilumeo-api-aii4",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"employees"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create records",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsInVzZXJuYW1lIjoiQnJlbm8gSGVucmlxdWUgZGEgU2lsdmEiLCJjb2RlIjoiSUxVTUVPMDEiLCJpYXQiOjE3MzY3MjE0MTMsImV4cCI6MTczNjczNTgxM30.OuONBUGMPWd4rJrlgqGc6Xh8ZlmMGx2SeMibX5cV5NU",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"record\": \"2025-01-12T20:06:00.632Z\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://ilumeo-api-aii4.onrender.com/records",
+					"protocol": "https",
+					"host": [
+						"ilumeo-api-aii4",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"records"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get current day records",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsInVzZXJuYW1lIjoiQnJlbm8gSGVucmlxdWUgZGEgU2lsdmEiLCJjb2RlIjoiSUxVTUVPMDEiLCJpYXQiOjE3MzY2ODM4NDEsImV4cCI6MTczNjY5ODI0MX0.m047jUzFU6c9fthO56-jXrMZxd_vdj_2At2xf5jT3r8",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://ilumeo-api-aii4.onrender.com/records/today",
+					"protocol": "https",
+					"host": [
+						"ilumeo-api-aii4",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"records",
+						"today"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get employee records",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://ilumeo-api-aii4.onrender.com/employees",
+					"protocol": "https",
+					"host": [
+						"ilumeo-api-aii4",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"employees"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get employee records by month",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsInVzZXJuYW1lIjoiQnJlbm8gSGVucmlxdWUgZGEgU2lsdmEiLCJjb2RlIjoiSUxVTUVPMDEiLCJpYXQiOjE3MzY3MjE0MTMsImV4cCI6MTczNjczNTgxM30.OuONBUGMPWd4rJrlgqGc6Xh8ZlmMGx2SeMibX5cV5NU",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://ilumeo-api-aii4.onrender.com/employees/records?month=1&year=2025",
+					"protocol": "https",
+					"host": [
+						"ilumeo-api-aii4",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"employees",
+						"records"
+					],
+					"query": [
+						{
+							"key": "month",
+							"value": "1"
+						},
+						{
+							"key": "year",
+							"value": "2025"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get employee balance",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsInVzZXJuYW1lIjoiQnJlbm8gSGVucmlxdWUgZGEgU2lsdmEiLCJjb2RlIjoiSUxVTUVPMDEiLCJpYXQiOjE3MzY3MjE0MTMsImV4cCI6MTczNjczNTgxM30.OuONBUGMPWd4rJrlgqGc6Xh8ZlmMGx2SeMibX5cV5NU",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://ilumeo-api-aii4.onrender.com/employees/balances",
+					"protocol": "https",
+					"host": [
+						"ilumeo-api-aii4",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"employees",
+						"balances"
+					],
+					"query": [
+						{
+							"key": "month",
+							"value": "1",
+							"disabled": true
+						},
+						{
+							"key": "year",
+							"value": "2025",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"code\": \"ILUMEO01\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://ilumeo-api-aii4.onrender.com/auth/login",
+					"protocol": "https",
+					"host": [
+						"ilumeo-api-aii4",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get profile",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsInVzZXJuYW1lIjoiQnJlbm8gSGVucmlxdWUgZGEgU2lsdmEiLCJjb2RlIjoiSUxVTUVPMDEiLCJpYXQiOjE3MzY2ODM4NDEsImV4cCI6MTczNjY5ODI0MX0.m047jUzFU6c9fthO56-jXrMZxd_vdj_2At2xf5jT3r8",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://ilumeo-api-aii4.onrender.com/employees/profile",
+					"protocol": "https",
+					"host": [
+						"ilumeo-api-aii4",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"employees",
+						"profile"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
