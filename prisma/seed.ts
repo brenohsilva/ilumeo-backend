@@ -15,10 +15,18 @@ function getRandomTime(baseDate: Date, hours: number, minutesRange = 59): Date {
 }
 
 async function main() {
-  const userId = 1;
+  const user = await prisma.employees.create({
+    data: {
+      name: 'Beatriz Carvalho',
+      code: 'ILUMEO01',
+    },
+  });
+
+  console.log(`Usuário criado com ID: ${user.id}`);
+
   const records = [];
-  const startDate = new Date('2024-12-01');
-  const endDate = new Date('2025-01-10');
+  const startDate = new Date('2024-01-02');
+  const endDate = new Date('2025-01-11');
 
   for (
     let date = new Date(startDate);
@@ -39,7 +47,7 @@ async function main() {
       const balanceHours = workedHours - 8;
 
       records.push({
-        employeesId: userId,
+        employeesId: user.id,
         day: date.getDate(),
         month: date.getMonth() + 1,
         year: date.getFullYear(),
